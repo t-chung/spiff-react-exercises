@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Exercise from "../exercise/Exercise";
+import "./ProgressBarExercise.css";
 
 const ProgressBarExercise = () => {
   return (
@@ -18,5 +19,22 @@ export default ProgressBarExercise;
 // ----------------------------------------------------------------------------------
 
 const Solution = () => {
-  return <div>Add solution here</div>;
+  const [done, setDone] = useState(0);
+  const startClick = () => {
+    setDone(30);
+  };
+  const finishClick = () => {
+    setDone(100);
+  };
+  return (
+    <div>
+      <div className="progress">
+        <div className="progressDone" style={{ width: `${done}%` }} />
+        <button className="progressBarButton" onClick={startClick}>START REQUEST</button>
+        <button className="progressBarButton finishButton" onClick={finishClick}>
+          FINISH REQUEST
+        </button>
+      </div>
+    </div>
+  );
 };
