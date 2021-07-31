@@ -21,6 +21,7 @@ export default ParserExercise;
 const Solution = () => {
   const [inputString, setInputString] = useState("");
   const [output, setOutput] = useState({});
+  const [highlighted, setHighlighted] = useState(null);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -45,31 +46,56 @@ const Solution = () => {
       <div>
         <ul>
           {Object.keys(output).map((char) => {
-            return <li key={char}><b>{char}</b> {output[char]}</li>
+            return <li key={char}><b onClick={e => setHighlighted(e.target.innerText)}>{char}</b> {output[char]}</li>
           })}
         </ul>
       </div>
     )
   }, [output]);
+
+  const displayHighlighted = useMemo(() => {
+    if (highlighted) {
+      const wordsArr = inputString.split(" ");
+      const hightlightedOutput = (
+        <span>
+          {wordsArr.map((word, i) => {
+            if (word.includes(highlighted)) {
+              return <span key={`${word}${i}`}><mark>{[...word].map((char, index) => {
+                return <span key={`${char}${index}`}>{char === highlighted ? <b>{char}</b> : char}</span>;
+              })}</mark> </span>
+            }
+            return <span key={`${word}${i}`}>{word} </span>;
+          })}
+        </span>
+      );
+      return hightlightedOutput;
+    }
+    return null;
+  }, [inputString, highlighted]);
+
   const resetClick = () => {
     setInputString("");
   };
   return (
     <form onSubmit={handleSubmit}>
       <label>Phrase:</label>
+
       <div>
-        <textarea
+        <span>
+          <textarea
           id="parser-input"
           name="parser-input"
           rows="4"
           value={inputString}
           onChange={e => setInputString(e.target.value)}
-        />
+          />
+        </span>
+        {displayHighlighted}
       </div>
       <button className="parserButton" type="submit">START REQUEST</button>
       <button className="parserButton resetButton" onClick={resetClick}>
         RESET
-			</button>
+      </button>
       {displayOutput}
     </form>
   );
