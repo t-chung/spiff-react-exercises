@@ -39,3 +39,17 @@ button:active{
   margin-top: 8px;
   margin-bottom: 8px;
 }
+ul {
+  columns: 100px 2;
+}
+ul b {
+  display: inline-block;
+  width: 5%;
+  position: relative;
+  padding-right: 2px; /* Ensures colon does not overlay the text */
+}
+ul b::after {
+  content: ":";
+  position: absolute;
+  right: 2px;
+}
