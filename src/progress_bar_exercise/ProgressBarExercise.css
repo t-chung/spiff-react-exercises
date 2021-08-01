@@ -1,0 +1,54 @@
+
+.progress {
+	background-color: #d8d8d8;
+	border-radius: 20px;
+	margin: 15px 0;
+	height: 6px;
+	width: 440px;
+}
+
+.progressDone {
+	background: linear-gradient(45deg, orange, red);
+	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+	border-radius: 20px;
+	height: 100%;
+}
+.progressBarButton {
+  background-color: #FFFFFF;
+  border: 1px solid #55CDB6;
+  width: 200px;
+  border-radius:2em;
+  color: #55CDB6;
+  padding: 15px 32px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  font-family:"Montserrat", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+.finishButton {
+	border: 1px solid red;
+	color: red;
+}
+button:hover {
+  border: 2px solid;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+button:active{
+  border: 3px solid;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 3s, opacity 3s linear;
+}
