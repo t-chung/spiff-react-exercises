@@ -97,11 +97,11 @@ const Solution = ({breakPoints}) => {
   }, [done])
   return (
     <div>
-      <div className={`progress ${barVisibility}`}>
-        <div className={`progressDone`} style={{ width: `${done}%` }} />
+      <div data-testid="progressBar" className={`progress ${barVisibility}`}>
+        <div data-testid="progressDone" className={`progressDone`} style={{ width: `${done}%` }} />
       </div>
-      <button className="progressBarButton" onClick={startClick}>{startButtonText}</button>
-      <button className="progressBarButton finishButton" onClick={finishClick}>
+      <button data-testid="startButton" className="progressBarButton" onClick={startClick}>{startButtonText}</button>
+      <button data-testid="finishButton" className="progressBarButton finishButton" onClick={finishClick}>
         FINISH REQUEST
       </button>
     </div>
